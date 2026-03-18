@@ -2512,7 +2512,7 @@ function openShop(npc){
 let currentEnemy=null,combatState={playerTurn:true,defending:false,timingActive:false};
 // Spawn protection timer (ms since last combat or game start)
 let lastCombatEnd = Date.now();
-const SPAWN_PROTECT_MS = 35000; // 35 seconds
+const SPAWN_PROTECT_MS = 45000; // 35 seconds
 
 function isSpawnProtected(){
   return (Date.now() - lastCombatEnd) < SPAWN_PROTECT_MS;
