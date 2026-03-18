@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>📓 Paper Forest Quest</title>
+<title>📓 A Jackal's Paper Quest</title>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Permanent+Marker&family=Patrick+Hand&family=Schoolbell&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -897,8 +897,8 @@ body{font-family:'Patrick Hand',cursive;touch-action:manipulation;overscroll-beh
     </div>
     <div class="title-sticker">v6<br>NEW!</div>
     <div class="title-inner">
-      <div class="title-logo">📓 Paper Forest Quest</div>
-      <div class="title-sub">An ancient mystery slumbers in the enchanted woods. Only a sharp mind can uncover its secrets.</div>
+      <div class="title-logo">📓 A Jackal's Paper Quest</div>
+      <div class="title-sub">A tale and a adventure of a young jackal that dreams of exploring these worlds.</div>
       <div class="title-div"></div>
       <div class="title-btns">
         <div class="tbtn ng" onclick="showSaveScreen('new')">📜 New Game</div>
@@ -1207,9 +1207,6 @@ function debugAudio(){
   });
   alert(lines.join('\n'));
 }
-// ═══════════════════════════════════════════
-// AUDIO SYSTEM — Simple & Reliable
-// ═══════════════════════════════════════════
 const AUDIO={
   bgm:{},sfx:{},
   currentBgm:null,
@@ -1383,9 +1380,6 @@ window.addEventListener('load',()=>{
   AUDIO._pendingBgm='title';
   console.log('Window loaded, audio pending title');
 });
-// ═══════════════════════════════════════════
-// CONSTANTS & DATA
-// ═══════════════════════════════════════════
 const RUNE_SYMS=['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛇ','ᛈ','ᛉ'];
 const COL_OPTS=['#e84040','#e88020','#e8d820','#40c040','#4080e8','#8040e8','#e840a0'];
 const MEM_SYMS=['🐺','🌲','🍄','🌸','🪨','💎','🌿','⭐'];
@@ -1468,14 +1462,9 @@ const ORB_STATE={
   unlocked:{},   // orbId -> true when challenge solved
   inChest:false, // true when all 5 placed in chest
 };
-// ═══════════════════════════════════════════
-// CAMERA
-// ═══════════════════════════════════════════
+
 const CAM={x:.5,y:.65,zoom:1.6,targetZoom:1.6,minZoom:1.0,maxZoom:2.8,smooth:.09,revealed:[]};
 
-// ═══════════════════════════════════════════
-// SAVE SYSTEM
-// ═══════════════════════════════════════════
 const SK='pfq_v6';
 const loadSaves=()=>{try{return JSON.parse(localStorage.getItem(SK))||[null,null,null,null]}catch{return[null,null,null,null]}};
 const writeSaves=a=>localStorage.setItem(SK,JSON.stringify(a));
@@ -1585,9 +1574,6 @@ function startNewGame(slot,charName='Sky'){
   startGame();
 }
 
-// ═══════════════════════════════════════════
-// GAME STATE
-// ═══════════════════════════════════════════
 const G={
   hp:20,maxHp:20,mp:15,maxMp:15,xp:0,maxXp:400,sta:10,maxSta:10,
   coins:0,atk:10,def:7,spd:14,lck:5,level:1,bag:[],statusEffects:['🌲 Forest'],
@@ -1597,9 +1583,6 @@ const G={
   defeatedEnemies:[]
 };
 
-// ═══════════════════════════════════════════
-// PLAYER MOVEMENT
-// ═══════════════════════════════════════════
 const PL={
   wx:.5,wy:.65,tx:.5,ty:.65,
   walking:false,running:false,
@@ -1754,9 +1737,6 @@ function w2s(wx,wy){
 }
 function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
 
-// ═══════════════════════════════════════════
-// CAMERA
-// ═══════════════════════════════════════════
 function updateCam(){
   CAM.x+=(PL.wx-CAM.x)*CAM.smooth;
   CAM.y+=(PL.wy-CAM.y)*CAM.smooth;
@@ -1861,9 +1841,6 @@ function updateObjsWithCam(){
   });
 }
 
-// ═══════════════════════════════════════════
-// DAY/NIGHT SYSTEM
-// ═══════════════════════════════════════════
 function updateDayNight(){
   dayTime=(dayTime+DAY_SPEED/60)%1440;
   const h=Math.floor(dayTime/60),m=Math.floor(dayTime%60);
@@ -1884,10 +1861,6 @@ function updateDayNight(){
   ENEMY_NPCS.forEach(e=>e._curAlertRange=e.alertRange*(darkness>.5?1.5:1));
 }
 let FOG_DENSITY=.82;
-
-// ═══════════════════════════════════════════
-// CLICK TO MOVE
-// ═══════════════════════════════════════════
 document.getElementById('game-vp').addEventListener('click',e=>{
   if(G.pzOpen||G.msgActive||G.combatActive||G.shopOpen)return;
 
@@ -1952,9 +1925,7 @@ function showWaypoint(sx,sy){
   wp.classList.add('show');setTimeout(()=>wp.classList.remove('show'),800);
 }
 
-// ═══════════════════════════════════════════
-// KEYBOARD
-// ═══════════════════════════════════════════
+
 document.addEventListener('keydown',e=>{
   const k=e.key.toLowerCase();
   if(k==='w')         PL.keys.w=true;
@@ -2013,9 +1984,6 @@ document.addEventListener('keyup',e=>{
   if(e.key==='Shift') PL.keys.shift=false;
 });
 
-// ═══════════════════════════════════════════
-// MOBILE JOYSTICK
-// ═══════════════════════════════════════════
 function initMobileCtrl(){
   const base=document.getElementById('joy-base'),stick=document.getElementById('joy-stick');
   let ctr={x:0,y:0};
@@ -2058,10 +2026,6 @@ document.getElementById('game-vp').addEventListener('wheel',e=>{
   document.getElementById('zoom-ind').classList.add('show');
   clearTimeout(window._zt);window._zt=setTimeout(()=>document.getElementById('zoom-ind').classList.remove('show'),1200);
 },{passive:false});
-
-// ═══════════════════════════════════════════
-// FOG & MINIMAP
-// ═══════════════════════════════════════════
 let fogCtx=null,mmCtx=null,doodleCtx=null;
 function initFog(){
   const fc=document.getElementById('fog-canvas');
@@ -2189,10 +2153,6 @@ function renderMinimap(){
   const hw=.5/CAM.zoom;
   mmCtx.strokeRect((CAM.x-hw)*120,(CAM.y-hw)*90,(1/CAM.zoom)*120,(1/CAM.zoom)*90);
 }
-
-// ═══════════════════════════════════════════
-// PLACE ALL OBJECTS
-// ═══════════════════════════════════════════
 function placeAll(){
   // Clear obj-layer completely before re-placing everything
   const layer=document.getElementById('obj-layer');
@@ -2226,10 +2186,6 @@ function placeEnv(){
   const mp=w2s(MUD_POS.wx,MUD_POS.wy);
   md.style.left=(mp.x-40)+'px';md.style.top=(mp.y-15)+'px';
 }
-
-// ═══════════════════════════════════════════
-// STONES
-// ═══════════════════════════════════════════
 function placeStones(){
   const layer=document.getElementById('obj-layer');
   stoneEls={};
@@ -2368,9 +2324,6 @@ function checkProximity(){
   updateHUD();
 }
 
-// ═══════════════════════════════════════════
-// NPC SYSTEM
-// ═══════════════════════════════════════════
 function placeNPCs(){
   document.querySelectorAll('.npc').forEach(e=>e.remove());
   npcEls={};enemyEls={};
@@ -2485,9 +2438,6 @@ function interactNPC(n){
     box.addEventListener('touchend',go,{passive:true});
   }
 }
-// ═══════════════════════════════════════════
-// SHOP SYSTEM
-// ═══════════════════════════════════════════
 function openShop(npc){
   G.shopOpen=true;
   document.getElementById('shop-title').textContent=npc.name+"'s Shop";
@@ -2562,13 +2512,10 @@ function openShop(npc){
   document.getElementById('shop-screen').classList.add('show');
 }
 
-// ═══════════════════════════════════════════
-// COMBAT SYSTEM (Paper Mario style)
-// ═══════════════════════════════════════════
 let currentEnemy=null,combatState={playerTurn:true,defending:false,timingActive:false};
 // Spawn protection timer (ms since last combat or game start)
 let lastCombatEnd = Date.now();
-const SPAWN_PROTECT_MS = 25000; // 1 minute 30 seconds
+const SPAWN_PROTECT_MS = 35000; // 35 seconds
 
 function isSpawnProtected(){
   return (Date.now() - lastCombatEnd) < SPAWN_PROTECT_MS;
@@ -2964,9 +2911,6 @@ function updateCbPlayer(){
   document.getElementById('cb-pl-hpv').textContent=Math.ceil(G.hp)+'/'+G.maxHp;
 }
 
-// ═══════════════════════════════════════════
-// PUZZLE ENGINE
-// ═══════════════════════════════════════════
 function openPuzzle(id){
   const pz=[...PUZZLES,...BONUS].find(p=>p.id===id);if(!pz)return;
   G.pzOpen=true;G.currentPzId=id;
@@ -3043,10 +2987,6 @@ function allMainDone(){
   document.getElementById('chest').classList.add('ready');
   msg(G.charName,'ALL FIVE SEALS BROKEN! That chest over there is glowing like crazy! Time to open it!');
 }
-
-// ═══════════════════════════════════════════
-// PUZZLE BUILDERS
-// ═══════════════════════════════════════════
 function buildRune(body,id){
   const st=G.pzStates[id];
   if(!st.seq){st.seq=[...RUNE_SYMS].sort(()=>Math.random()-.5).slice(0,4);st.ans=[];st.shown=false;}
@@ -3233,9 +3173,6 @@ function buildSlide2(body,id){
 }
 function buildMaze2(body,id){buildMaze(body,id,9,7,true);}
 
-// ═══════════════════════════════════════════
-// CHEST
-// ═══════════════════════════════════════════
 function clickChest(){
   if(G.chestOpened){msg(G.charName,'I already grabbed everything! Best haul ever!');return;}
   if(!PUZZLES.every(p=>G.pzStates[p.id]?.solved)){
@@ -3278,9 +3215,6 @@ function showGrandVictory(){
   stopTimer();document.getElementById('vc-sub').textContent='ALL 8 SEALS! True Forest Master!';showVictory();
 }
 
-// ═══════════════════════════════════════════
-// HUD & ACTIONS
-// ═══════════════════════════════════════════
 function updateHUD(){
   const p=(a,b)=>Math.max(0,Math.min(100,a/b*100))+'%';
   ['hp','mp','xp','sta'].forEach(k=>{
@@ -3313,8 +3247,6 @@ function updateProgList(){
     t.textContent=txt;
     pl.appendChild(t);
   };
-
-  // ── SEALS ──────────────────────────────
   makeTitle('Stone Seals');
   const list=G.bonusMode?BONUS:PUZZLES;
   list.forEach(pz=>{
@@ -3329,8 +3261,6 @@ function updateProgList(){
     d.append(ck,tx);
     pl.appendChild(d);
   });
-
-  // ── ORBS ───────────────────────────────
   makeTitle('Hidden Orbs');
   ORB_DEFS.forEach(orb=>{
     const found=ORB_STATE.found[orb.id];
@@ -3369,8 +3299,6 @@ function updateProgList(){
     d.append(ck,tx);
     pl.appendChild(d);
   });
-
-  // ── CHEST ──────────────────────────────
   makeTitle('Grand Chest');
   const chestItem=document.createElement('div');
   chestItem.className='prog-item';
@@ -3392,8 +3320,6 @@ function updateProgList(){
   if(chestReady)chestTx.style.color='var(--acc-gold)';
   chestItem.append(chestCk,chestTx);
   pl.appendChild(chestItem);
-
-  // ── ENEMIES DEFEATED ───────────────────
   if(G.defeatedEnemies.length>0){
     makeTitle('Enemies');
     const eItem=document.createElement('div');
@@ -3453,9 +3379,6 @@ function showHint(){
   G.coins=Math.max(0,G.coins-5);updateHUD();addStatus('Hinted');
 }
 
-// ═══════════════════════════════════════════
-// MESSAGES
-// ═══════════════════════════════════════════
 function msg(name,text,cb){G.msgs.push({name,text,cb});if(!G.msgActive)nextMsg();}
 function nextMsg(){
   if(!G.msgs.length){
@@ -3510,10 +3433,6 @@ function nextMsg(){
   newBox.addEventListener('click',dismiss,{once:true});
   newBox.addEventListener('touchend',dismiss,{once:true,passive:true});
 }
-
-// ═══════════════════════════════════════════
-// PARTICLES & FX
-// ═══════════════════════════════════════════
 function spawnPts(x,y,col,n=12){
   const c=document.getElementById('ptcl');
   for(let i=0;i<n;i++){
@@ -3531,10 +3450,6 @@ function spawnFT(x,y,text,cls=''){
   document.getElementById('game-vp').appendChild(t);setTimeout(()=>t.remove(),1600);
 }
 
-
-// ═══════════════════════════════════════════
-// ORB SYSTEM
-// ═══════════════════════════════════════════
 let orbEls={};
 let orbPanelOpen=false;
 let currentOrbId=null;
@@ -3968,10 +3883,6 @@ function spawnLeaves(){
     tl.appendChild(l);setTimeout(()=>l.remove(),14000);
   },1200);
 }
-
-// ═══════════════════════════════════════════
-// TIMER
-// ═══════════════════════════════════════════
 let timerInt=null;
 function startTimer(){
   stopTimer();
@@ -3984,9 +3895,6 @@ function startTimer(){
 function stopTimer(){if(timerInt){clearInterval(timerInt);timerInt=null;}}
 function fmtT(s){const m=~~(s/60),sc=s%60;return(m<10?'0':'')+m+':'+(sc<10?'0':'')+sc;}
 
-// ═══════════════════════════════════════════
-// HELPERS
-// ═══════════════════════════════════════════
 function mkBtn(cls,txt,cb){
   const b=document.createElement('button');b.className='pz-btn'+(cls?' '+cls:'');b.textContent=txt;b.onclick=cb;return b;
 }
@@ -3995,7 +3903,7 @@ function attDiv(st,pen=2){
   a.textContent='Attempts: '+(st.attempts||0)+' | penalty: '+pen+' HP per failure';return a;
 }
 function showAbout(){
-  alert('📓 Paper Forest Quest v6.0\n\nFeatures:\n- Custom character name\n- WASD + Arrow Keys movement\n- Shift to run\n- Day/Night cycle with fog\n- Paper Mario style combat\n- Friendly NPC shops (Maple, Thornwick)\n- Chatty NPCs (Pip, Luma)\n- Enemy NPCs that trigger battles\n- Doodle World scribble effect\n- Fog of war exploration\n- 5 main + 3 bonus puzzles\n- 4 save slots\n\nControls:\n- WASD / Arrows: Move\n- Shift: Run\n- Click/Tap: Move to point\n- Joystick: Mobile movement\n- B: Bag, H: Hint, I: Inspect\n- Scroll/Pinch: Zoom\n- Esc: Close panels');
+  alert('📓 A Jackal's Paper Quest v6.0\n\nFeatures:\n- Custom character name\n- WASD + Arrow Keys movement\n- Shift to run\n- Day/Night cycle with fog\n- Paper Mario style combat\n- Friendly NPC shops (Maple, Thornwick)\n- Chatty NPCs (Pip, Luma)\n- Enemy NPCs that trigger battles\n- Doodle World scribble effect\n- Fog of war exploration\n- 5 main + 3 bonus puzzles\n- 4 save slots\n\nControls:\n- WASD / Arrows: Move\n- Shift: Run\n- Click/Tap: Move to point\n- Joystick: Mobile movement\n- B: Bag, H: Hint, I: Inspect\n- Scroll/Pinch: Zoom\n- Esc: Close panels');
 }
 function goTitle(){
   stopTimer();
