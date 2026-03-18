@@ -2950,8 +2950,9 @@ function closePz(){
 function overlayClick(){if(G.pzOpen)closePz();if(G.bagOpen)closeBag();}
 
 function pzSolved(id){
-  
-  G.pzStaupdateProgList();tes[id].solved=true;G.puzzlesDone++;
+  G.pzStates[id].solved=true;
+  G.puzzlesDone++;
+  updateProgList();
   closePz();
   const el=stoneEls[id];if(el){el.classList.add('solved');setTimeout(()=>el.remove(),800);delete stoneEls[id];}
   const xpg=60+~~(Math.random()*30);const cg=18+~~(Math.random()*25);
